@@ -13,6 +13,8 @@ from django.http import Http404
 
 from rest_framework import mixins,generics,viewsets
 
+from blogs.models import Blog,Comment
+from blogs.serializers import Blogserializer,Commentserializer
 
 
 
@@ -168,4 +170,13 @@ from rest_framework import mixins,generics,viewsets
 #using modelviewset
 class Employeviewset(viewsets.ModelViewSet):
     queryset=Employe.objects.all()
-    serializer_class=Employeserializer
+    serializer_class=Employeserializer 
+
+
+class Blogview(generics.ListCreateAPIView):
+    queryset=Blog.objects.all()
+    serializer_class=Blogserializer
+
+class Commentview(generics.ListCreateAPIView):
+    queryset=Comment.objects.all()
+    serializer_class=Commentserializer
